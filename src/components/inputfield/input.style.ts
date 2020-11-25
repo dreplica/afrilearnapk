@@ -4,7 +4,6 @@ export const Container = styled.View`
   width: 100%;
   max-width: 300px;
   height: 40px;
-  flex-direction: column;
   justify-content: center;
   align-items: flex-start;
 `;

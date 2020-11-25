@@ -1,4 +1,5 @@
 {
   "name": "mobileafrilearn",
-  "displayName": "mobileafrilearn"
+  "displayName": "mobileafrilearn",
+  "orientation":"potrait"
 }
