@@ -16,8 +16,24 @@ export const Form = styled.KeyboardAvoidingView`
   align-self: center;
 `;
 
-export const Text = styled.Text``;
+export const HeaderText = styled.Text`
+  width: 100%;
+  font-size: 40px;
+`;
 
-export const Image = styled.Image``;
+export const TextSmall = styled.Text`
+  width: 80%;
+  font-size: 15px;
+`;
 
-export const Link = styled.TouchableOpacity``;
+export const Image = styled.Image`
+  width: 250px;
+  height: 180px;
+`;
+
+export const Link = styled.TouchableOpacity`
+  width: 80%;
+  text-align: center;
+  flex-direction: row;
+  justify-content: center;
+`;

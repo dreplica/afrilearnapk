@@ -2,7 +2,14 @@ import React, {useState} from 'react';
 // import {Dimensions} from 'react-native';
 import Button from '../../components/button';
 import InputField from '../../components/inputfield';
-import {SignupContainer, Text, Link, /*Image*/ Form} from './signup.style';
+import {
+  SignupContainer,
+  HeaderText,
+  TextSmall,
+  Link,
+  Image,
+  Form,
+} from './signup.style';
 
 export default function Signup() {
   const [state, setstate] = useState({
@@ -13,10 +20,11 @@ export default function Signup() {
   });
   return (
     <SignupContainer>
-      {/* <Image source={require('../../assets')} /> */}
-      <Text>
-        Proceed with Your <Text>Signup</Text>
-      </Text>
+      <Image source={require('../../assets/img/logo.jpg')} />
+      <HeaderText style={{opacity: 0.5}}> 
+        Proceed with Your{' '}
+        <HeaderText style={{fontWeight: 'bold'}}>Signup</HeaderText>
+      </HeaderText>
       <Form>
         <InputField
           handleChange={(val) => setstate({...state, fullname: val})}
@@ -40,9 +48,11 @@ export default function Signup() {
         />
         <Button title="CREATE ACCOUNT" onPress={() => {}} />
       </Form>
-      <Text>Already have an account? </Text>
       <Link onPress={() => {}}>
-        <Text>Click to Login</Text>
+        <TextSmall>Already have an account? </TextSmall>
+        <TextSmall style={{fontSize: 14, fontWeight: 'bold'}}>
+          Click to Login
+        </TextSmall>
       </Link>
     </SignupContainer>
   );
