@@ -1,5 +1,5 @@
 import React, {ReactChild} from 'react';
-import {StatusBar} from 'react-native';
+import {StatusBar, Dimensions} from 'react-native';
 import {SafeAreaContainer, ScrollView} from './layout.style';
 
 interface iProps {
@@ -7,12 +7,14 @@ interface iProps {
   children: ReactChild;
 }
 
+const {height} = Dimensions.get('screen');
+
 export default function ContainerLayout({children}: iProps) {
   return (
     <>
       <StatusBar barStyle="dark-content" />
-      <SafeAreaContainer>
-        <ScrollView contentInsetAdjustmentBehavior="automatic">
+      <SafeAreaContainer style={{height}}>
+        <ScrollView style={{height}} scrollEnabled>
           {children}
         </ScrollView>
       </SafeAreaContainer>

@@ -1,5 +1,9 @@
 import Axios from 'axios';
 
 export default Axios.create({
-  baseURL: process.env.REACT_APP_BASE_URL as string,
+  baseURL: 'http://localhost:3000/',
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+  },
 });

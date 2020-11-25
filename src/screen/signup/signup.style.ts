@@ -4,9 +4,6 @@ export const SignupContainer = styled.View`
   flex: 1;
   justify-content: flex-start;
   align-items: flex-start;
-  /* padding-top: 30px;
-  padding-top: 30px;
-  padding-bottom: 30px; */
   padding: 30px 20px;
 `;
 
@@ -27,13 +24,20 @@ export const TextSmall = styled.Text`
 `;
 
 export const Image = styled.Image`
-  width: 250px;
-  height: 180px;
+  width: 150px;
+  height: 120px;
 `;
 
 export const Link = styled.TouchableOpacity`
-  width: 80%;
+  width: 100%;
   text-align: center;
   flex-direction: row;
   justify-content: center;
+`;
+
+export const ModalView = styled.View`
+  flex: 1;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 `;

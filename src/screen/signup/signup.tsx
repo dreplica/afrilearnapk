@@ -1,6 +1,10 @@
+import Axios from 'axios';
 import React, {useState} from 'react';
+import {Modal} from 'react-native';
+// import fetch from '../../api/fetch';
 // import {Dimensions} from 'react-native';
 import Button from '../../components/button';
+import ErrorView from '../../components/error';
 import InputField from '../../components/inputfield';
 import {
   SignupContainer,
@@ -9,51 +13,98 @@ import {
   Link,
   Image,
   Form,
+  ModalView,
 } from './signup.style';
 
 export default function Signup() {
+  const [error, setError] = useState({
+    message: '',
+    check: false,
+  });
+  const [modal, setModal] = useState(false);
   const [state, setstate] = useState({
     fullname: '',
     email: '',
     phone: '',
     password: '',
   });
+  const onSubmit = async () => {
+    // try {
+    console.log('starting');
+
+    const {data} = await Axios.post('/api/signup', {
+      ...state,
+    });
+    console.log(data);
+    // if (data.code === 200) {
+    //   setModal(true);
+    // }
+    //   console.log('data', data);
+    // } catch (error) {
+    //   // setModal(true);
+    //   setError({check: true, message: 'sorry'});
+    //   console.log(error);
+    // }
+  };
+
   return (
-    <SignupContainer>
-      <Image source={require('../../assets/img/logo.jpg')} />
-      <HeaderText style={{opacity: 0.5}}> 
-        Proceed with Your{' '}
-        <HeaderText style={{fontWeight: 'bold'}}>Signup</HeaderText>
-      </HeaderText>
-      <Form>
-        <InputField
-          handleChange={(val) => setstate({...state, fullname: val})}
-          text={state.fullname}
-          title="Full Name"
+    <>
+      <SignupContainer>
+        <ErrorView
+          show={error.check}
+          error={error.message}
+          setError={setError}
         />
-        <InputField
-          handleChange={(val) => setstate({...state, email: val})}
-          text={state.email}
-          title="Email"
-        />
-        <InputField
-          handleChange={(val) => setstate({...state, phone: val})}
-          text={state.phone}
-          title="Phone Number"
-        />
-        <InputField
-          handleChange={(val) => setstate({...state, password: val})}
-          text={state.password}
-          title="Password"
-        />
-        <Button title="CREATE ACCOUNT" onPress={() => {}} />
-      </Form>
-      <Link onPress={() => {}}>
-        <TextSmall>Already have an account? </TextSmall>
-        <TextSmall style={{fontSize: 14, fontWeight: 'bold'}}>
-          Click to Login
-        </TextSmall>
-      </Link>
-    </SignupContainer>
+        <Image source={require('../../assets/img/logo.jpg')} />
+        <HeaderText style={{opacity: 0.5}}>
+          Proceed with Your{' '}
+          <HeaderText style={{fontWeight: 'bold'}}>Signup</HeaderText>
+        </HeaderText>
+        <Form>
+          <InputField
+            handleChange={(val) => setstate({...state, fullname: val})}
+            text={state.fullname}
+            title="Full Name"
+            type="text"
+          />
+          <InputField
+            handleChange={(val) => setstate({...state, email: val})}
+            text={state.email}
+            title="Email"
+            type="text"
+          />
+          <InputField
+            handleChange={(val) => setstate({...state, phone: val})}
+            text={state.phone}
+            title="Phone Number"
+            type="phone"
+          />
+          <InputField
+            handleChange={(val) => setstate({...state, password: val})}
+            text={state.password}
+            title="Password"
+            type="password"
+          />
+          <Button title="CREATE ACCOUNT" onPress={onSubmit} />
+          <Link onPress={() => {}}>
+            <TextSmall>
+              Already have an account?{' '}
+              <TextSmall style={{fontSize: 14, fontWeight: 'bold'}}>
+                Click to Login
+              </TextSmall>
+            </TextSmall>
+          </Link>
+        </Form>
+      </SignupContainer>
+      <Modal visible={modal} animationType="slide">
+        <ModalView>
+          <TextSmall
+            style={{margin: 'auto', width: '60%', textAlign: 'center'}}>
+            You've successfully signed up
+          </TextSmall>
+          <Button title="Close" onPress={() => setModal(false)} />
+        </ModalView>
+      </Modal>
+    </>
   );
 }

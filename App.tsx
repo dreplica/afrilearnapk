@@ -9,7 +9,7 @@
  */
 
 import React from 'react';
-import Signup from './src/screen/signup/signup';
+import Signup from './src/screen/signup/index';
 
 const App = () => {
   return <Signup />;
