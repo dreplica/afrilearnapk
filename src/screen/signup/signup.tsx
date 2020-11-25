@@ -1,8 +1,7 @@
-import Axios from 'axios';
+// import Axios from 'axios';
 import React, {useState} from 'react';
 import {Modal} from 'react-native';
-// import fetch from '../../api/fetch';
-// import {Dimensions} from 'react-native';
+import Fetch from '../../api/fetch';
 import Button from '../../components/button';
 import ErrorView from '../../components/error';
 import InputField from '../../components/inputfield';
@@ -29,22 +28,15 @@ export default function Signup() {
     password: '',
   });
   const onSubmit = async () => {
-    // try {
-    console.log('starting');
-
-    const {data} = await Axios.post('/api/signup', {
-      ...state,
-    });
-    console.log(data);
-    // if (data.code === 200) {
-    //   setModal(true);
-    // }
-    //   console.log('data', data);
-    // } catch (error) {
-    //   // setModal(true);
-    //   setError({check: true, message: 'sorry'});
-    //   console.log(error);
-    // }
+    try {
+      const {data} = await Fetch.post('/api/signup', {...state});
+      if (data.code === 200) {
+        setModal(true);
+        return;
+      }
+    } catch (error) {
+      setError({check: true, message: error.response.data.error});
+    }
   };
 
   return (

@@ -28,7 +28,7 @@ export default function InputField({text, type, title, handleChange}: iProps) {
         <>
           <TextField>{title}</TextField>
           <TextInputField
-            placeholder=" first name"
+            placeholder=""
             onChangeText={(val) => handleChange(val)}
             value={text}
           />
@@ -38,7 +38,7 @@ export default function InputField({text, type, title, handleChange}: iProps) {
         <>
           <TextField>{title}</TextField>
           <TextInputField
-            placeholder=" first name"
+            placeholder=""
             onChangeText={(val) => handleChange(val)}
             value={text}
             secureTextEntry={state.secure}
@@ -56,7 +56,7 @@ export default function InputField({text, type, title, handleChange}: iProps) {
         <>
           <TextField>{title}</TextField>
           <TextInputField
-            placeholder=" first name"
+            placeholder=""
             onChangeText={(val) => handleChange(val)}
             value={text}
             keyboardType="phone-pad"

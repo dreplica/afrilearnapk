@@ -1,9 +1,8 @@
 import Axios from 'axios';
 
 export default Axios.create({
-  baseURL: 'http://localhost:3000/',
+  baseURL: 'https://polar-temple-24953.herokuapp.com',
   headers: {
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
+    'Content-Type': 'application/json; charset=utf-8',
   },
 });
